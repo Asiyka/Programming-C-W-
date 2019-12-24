@@ -36,6 +36,7 @@ def save_func(event):
     items['items'][username] = phone
     write(items)
     label['text'] = "Saved"
+    
     name.pack_forget()
     phone_number.pack_forget()
     save.pack_forget()
@@ -47,11 +48,16 @@ def watch_func(event):
     for name in all_phones:
         str += "\n" + name + " : " + all_phones[name] + "\n" 
     label['text'] = str
+    close.pack()
 
 def add_two_func(event):
     name.pack()
     phone_number.pack()
     save.pack()
+
+def close_func(event):
+    label['text'] = " "
+    close.pack_forget()
     
 
 root = Tk()
@@ -64,11 +70,13 @@ save = Button(width=40, bg="lightblue", text="Save")
 watch = Button(width=40, bg="lightgreen", text="Watch all phones")
 phone_number_two = Entry(width=30 , text="Shearch")
 label = Label(width=40, bg="white", fg="black")
+close = Button(width=40, bg="lightblue", text="Close")
 
 add_new_two.bind("<Button-1>", add_two_func)
 shearch.bind("<Button-1>", shearch_func)
 save.bind("<Button-1>", save_func)
 watch.bind("<Button-1>", watch_func)
+close.bind("<Button-1>", close_func)
 
 shearch_name.pack()
 shearch.pack()
